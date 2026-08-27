@@ -10,10 +10,12 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.bmohan.dnd_demo.vm.StartViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StartScreen() {
+fun StartScreen(viewModel: StartViewModel = hiltViewModel<StartViewModel>()) {
     Scaffold(topBar = {
         TopAppBar(title = {
             Text(text = "DND App")
