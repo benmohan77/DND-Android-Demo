@@ -1,2 +1,2 @@
-# D-D-Android-Demo
+# DND-Android-Demo
 Demo Android app using D&amp;D SRD API
