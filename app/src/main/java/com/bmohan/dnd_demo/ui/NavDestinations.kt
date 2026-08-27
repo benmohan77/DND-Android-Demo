@@ -1,4 +1,4 @@
-package com.bmohan.dnd_demo.ui.screens
+package com.bmohan.dnd_demo.ui
 
 import kotlinx.serialization.Serializable
 

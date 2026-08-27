@@ -48,9 +48,22 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.kotlin.serialization)
+
+    //Navigation
     implementation(libs.androidx.navigation.compose)
+
+    //Hilt
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    //OkHTTP + Retrofit
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.serialization.converter)
+
+    //Coroutines
+    implementation(libs.kotlinx.coroutines.core)
 
     ksp(libs.hilt.android.compiler)
     testImplementation(libs.junit)
