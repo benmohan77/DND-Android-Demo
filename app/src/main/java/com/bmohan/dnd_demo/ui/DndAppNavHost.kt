@@ -6,13 +6,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.bmohan.dnd_demo.ui.screens.StartScreen
+import com.bmohan.dnd_demo.ui.screens.ItemListScreen
 
 @Composable
 fun DndAppNavHost(modifier: Modifier = Modifier, navController: NavHostController = rememberNavController()) {
-    NavHost(modifier = modifier, navController = navController, startDestination = Start) {
-        composable<Start> {
-            StartScreen()
+    NavHost(modifier = modifier, navController = navController, startDestination = ItemList) {
+        composable<ItemList> {
+            ItemListScreen()
         }
     }
 }
