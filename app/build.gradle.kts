@@ -65,6 +65,10 @@ dependencies {
     //Coroutines
     implementation(libs.kotlinx.coroutines.core)
 
+    //Paging
+    implementation(libs.paging.common)
+    implementation(libs.paging.compose)
+
     ksp(libs.hilt.android.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))

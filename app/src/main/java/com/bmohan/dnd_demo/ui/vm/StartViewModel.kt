@@ -2,36 +2,28 @@ package com.bmohan.dnd_demo.ui.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bmohan.dnd_demo.data.model.SRDApiDirectories
-import com.bmohan.dnd_demo.data.service.SrdAPIService
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.bmohan.dnd_demo.data.model.ItemResponse
+import com.bmohan.dnd_demo.data.repository.ItemRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class StartViewModel @Inject constructor(private val srdAPIService: SrdAPIService): ViewModel() {
+class StartViewModel @Inject constructor(private val itemRepository: ItemRepository) : ViewModel() {
 
     private val _state = MutableStateFlow<StartState>(StartState.Loading)
-    val state: StateFlow<StartState> = _state
+//    val state: StateFlow<StartState> = _state
 
-    init {
-        viewModelScope.launch {
-            val directoriesResponse = srdAPIService.get2014Directories()
-            _state.value = if(directoriesResponse.isSuccessful && directoriesResponse.body() != null) {
-                StartState.Success(directoriesResponse.body()!!)
-            } else {
-                StartState.Error(directoriesResponse.message())
-            }
-        }
-    }
-
+    val itemPagingFlow: Flow<PagingData<ItemResponse.Item>> =
+        itemRepository.getItemsPaged().flow.cachedIn(viewModelScope)
 
     sealed class StartState {
-        object Loading: StartState()
-        data class Error(val message: String): StartState()
-        data class Success(val directories: SRDApiDirectories): StartState()
+        object Loading : StartState()
+        data class Error(val message: String) : StartState()
+        data class Success(val items: List<ItemResponse.Item>) : StartState()
     }
 
 }

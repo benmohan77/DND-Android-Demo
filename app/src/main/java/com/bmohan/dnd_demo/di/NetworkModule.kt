@@ -1,6 +1,6 @@
 package com.bmohan.dnd_demo.di
 
-import com.bmohan.dnd_demo.data.service.SrdAPIService
+import com.bmohan.dnd_demo.data.service.Open5eAPIService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,13 +32,13 @@ class NetworkModule {
         val json = Json { ignoreUnknownKeys = true }
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://www.dnd5eapi.co/api/")
+            .baseUrl("https://api.open5e.com/v2/")
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
     }
 
     @Provides
-    fun provideSrdApiService(retrofit: Retrofit): SrdAPIService {
-        return retrofit.create<SrdAPIService>()
+    fun provideSrdApiService(retrofit: Retrofit): Open5eAPIService {
+        return retrofit.create<Open5eAPIService>()
     }
 }
