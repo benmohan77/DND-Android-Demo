@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">D&amp;D Demo App</string>
+    <string name="open5e_browser">Open5e Browser</string>
+    <string name="items">Items</string>
 </resources>

@@ -2,8 +2,10 @@ package com.bmohan.dnd_demo.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -45,7 +48,7 @@ private fun ItemListContent(
     onBackPressed: () -> Unit,
 ) {
     Scaffold(topBar = {
-        DndTopAppBar(title = "Items", navigationIcon = {
+        DndTopAppBar(title = stringResource(R.string.items), navigationIcon = {
             IconButton(onBackPressed) {
                 Icon(painter = painterResource(R.drawable.arrow_back), contentDescription = null)
             }
@@ -69,7 +72,9 @@ private fun ItemListContent(
                 if (state is LoadState.Loading) {
                     item {
                         Column(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 8.dp),
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             CircularProgressIndicator()
@@ -84,14 +89,41 @@ private fun ItemListContent(
 @Composable
 private fun ItemListElement(item: Item, modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
-        Column(modifier = Modifier.padding(8.dp)) {
-            Text(text = item.name)
-            Text(text = item.cost + " gp", modifier = Modifier.padding(top = 4.dp))
-            Text(text = item.description, modifier = Modifier.padding(top = 4.dp))
+        Row(modifier = Modifier.fillMaxWidth()) {
+            Icon(
+                painterResource(R.drawable.sword),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(48.dp)
+                    .padding(12.dp)
+            )
+            Column(modifier = Modifier.padding(8.dp)) {
+                Text(text = item.name)
+                Text(text = item.cost + " gp", modifier = Modifier.padding(top = 4.dp))
+                Text(
+                    text = item.weight + " " + item.weightUnit,
+                    modifier = Modifier.padding(top = 4.dp)
+                )
+                Text(text = item.description, modifier = Modifier.padding(top = 4.dp))
+            }
         }
         HorizontalDivider()
     }
 }
+
+/**
+ * weapon
+ * armor
+ * wondrous-item
+ * tools
+ * potion
+ * adventuring-gear
+ * ammunition
+ * equipment-pack
+ * mount
+ * land-vehicle
+ * scroll
+ */
 
 @Preview
 @Composable
