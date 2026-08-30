@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class SpellRepository @Inject constructor(val service: Open5eAPIService) {
     fun getSpellsPaged(): Pager<Int, Spell> {
-        return Pager(config = PagingConfig(pageSize = 50, prefetchDistance = 100, initialLoadSize = 150), pagingSourceFactory = {
+        return Pager(config = PagingConfig(pageSize = 50), pagingSourceFactory = {
             SpellPagingSource(service)
         })
     }
