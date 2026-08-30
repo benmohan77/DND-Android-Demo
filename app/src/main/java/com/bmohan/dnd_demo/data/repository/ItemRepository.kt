@@ -9,7 +9,7 @@ import javax.inject.Inject
 class ItemRepository @Inject constructor(val service: Open5eAPIService) {
 
     fun getItemsPaged(): Pager<Int, Item> {
-        return Pager(config = PagingConfig(pageSize = 20), pagingSourceFactory = {
+        return Pager(config = PagingConfig(pageSize = 50, prefetchDistance = 25), pagingSourceFactory = {
             ItemPagingSource(service)
         })
     }

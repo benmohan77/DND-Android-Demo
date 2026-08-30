@@ -34,6 +34,9 @@ private fun HomeContent(
             HomeNavigationButton(stringResource(R.string.items)) {
                 navToScreen(HomeScreenNavDestinations.ItemList)
             }
+            HomeNavigationButton(stringResource(R.string.spells)) {
+                navToScreen(HomeScreenNavDestinations.SpellList)
+            }
         }
     }
 }

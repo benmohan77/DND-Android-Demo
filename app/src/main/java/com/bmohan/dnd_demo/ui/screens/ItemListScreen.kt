@@ -5,13 +5,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -90,15 +90,8 @@ private fun ItemListContent(
 private fun ItemListElement(item: Item, modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         Row(modifier = Modifier.fillMaxWidth()) {
-            Icon(
-                painterResource(R.drawable.sword),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(48.dp)
-                    .padding(12.dp)
-            )
             Column(modifier = Modifier.padding(8.dp)) {
-                Text(text = item.name)
+                Text(text = item.name, style = MaterialTheme.typography.titleLarge)
                 Text(text = item.cost + " gp", modifier = Modifier.padding(top = 4.dp))
                 Text(
                     text = item.weight + " " + item.weightUnit,

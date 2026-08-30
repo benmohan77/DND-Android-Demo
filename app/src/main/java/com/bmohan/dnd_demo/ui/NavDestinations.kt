@@ -5,6 +5,9 @@ import kotlinx.serialization.Serializable
 sealed class HomeScreenNavDestinations {
     @Serializable
     object ItemList: HomeScreenNavDestinations()
+
+    @Serializable
+    object SpellList: HomeScreenNavDestinations()
 }
 
 @Serializable

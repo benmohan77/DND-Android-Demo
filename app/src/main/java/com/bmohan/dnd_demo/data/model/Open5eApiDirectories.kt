@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class SRDApiDirectories(
+data class Open5eApiDirectories(
     @SerialName("ability-scores")
     val abilityScores: String? = null,
     @SerialName("alignments")
